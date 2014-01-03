@@ -1,0 +1,1 @@
+Here i try to examine what have i learned about c plus plus.
