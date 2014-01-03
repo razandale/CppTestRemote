@@ -1,12 +1,20 @@
-class shape:
-    shape(lenght,width)    
+#include <iostream>
+using namespace std;
+
+class shape:    
 {
 public:
-    shape(int lenght, int width){itsLenght = lenght; itsWidth = width;} //constructor
-    shape * shape(shape const &rhs);//copy constructor
-    virtual shape * Clone () {returnt new shape(*this);}//virtual "copy constructor"
-    virtual ~shape();
-    virtual draw(); //virtual method
+    shape(int lenght, int width)
+        {itsLenght = lenght; itsWidth = width;} //constructor
+
+    shape * shape(shape const &rhs)//copy constructor
+        {}
+
+    virtual shape * Clone ()//virtual "copy constructor"
+        {returnt new shape(*this);}
+
+    virtual ~shape();//destructor
+    virtual draw() {cout << "Drawing a shape";} //virtual method
 
 protected:
     int itsLenght;
