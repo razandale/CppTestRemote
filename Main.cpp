@@ -4,8 +4,9 @@ using namespace std;
 class shape://---------------------------------------------------------    
 {
 public:
-    shape(int lenght, int width)
-        {itsLenght = lenght; itsWidth = width;} //constructor
+    explicit shape(int lenght, int width): //constructor
+        itsLenght(lenght), itsWidth(Width) //Initialisation by razandale
+        {}
 
     shape(const shape &rhs)//copy constructor
         {}
@@ -30,7 +31,9 @@ shape::shape(const shape &rhs)
 class rectangle: public shape
 {
 public:
-    rectangle();
+    explicit rectangle(int lenght, int width):
+    shape(lenght, width) //Explicit call of basic constructor
+    {}
     rectangle(const rectangle &rhs);
     virtual rectangle * Clone ()
         {return new rectangle(*this);}
@@ -38,7 +41,7 @@ public:
     virtual draw() const {cout << "Drawing a rectangle";}
 };
 
-rectangle::rectangle(const shape &rhs)
+rectangle::rectangle(const rectangle &rhs)
 {
     itsLenght = rhs.itsLenght;
     itsWidth = rhs.itsWidth;
@@ -47,7 +50,9 @@ rectangle::rectangle(const shape &rhs)
 class square: public recangle
 {
 public:
-    square();
+    explicit square():
+    rectangle (lenght, width)
+    {};
     square(const square &rhs);
     virtual square * Clone ()
         {return new square(*this);}
@@ -55,9 +60,13 @@ public:
     virtual draw() const {cout << "Drawing a square";}
 };
 
-square::square(const shape &rhs)
+square::square(const square &rhs)
 {
     itsLenght = rhs.itsLenght;
     itsWidth = rhs.itsWidth;
 }    
+
+int main ()
+{
+    
 }
